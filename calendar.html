@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/bootstrap-theme.min.css">
+<link rel="stylesheet" href="styles/calendar.css" type="text/css" /> 
+
+<meta charset="utf-8">
+<title>Запись к косметологу</title>
+</head>
+
+<body onload="createCalendar(0)">
+	<center>
+		<span class="border border-info"><h1 id="month"></h1></span>
+	<div id="calendar">
+	
+	<!--	<input type="button" class="floated" id="back"  value="Предыдущий месяц" onclick="">
+		<input type="button" class="floated" id="next" value="Следующий месяц" onclick=""> -->
+		<div class="col-md-3">
+		<button class="btn btn-info btn-md floated" id="back">Предыдущий месяц</button>
+		<button class="btn btn-info btn-md " id="next" >Следующий месяц</button>
+		</div>
+		<div class="col-md-3 center ">
+		<div id="firsttable" class="table-responsive" >
+		
+		<table id="tableI" class = "table table-bordered ">
+		<thead>
+		<tr>
+			<th class="col-sm-1">ПН</th>
+			<th class="col-sm-1">ВТ</th>
+			<th class="col-sm-1">CР</th>
+			<th class="col-sm-1">ЧТ</th>
+			<th class="col-sm-1">ПТ</th>
+			<th class="col-sm-1">СБ</th>
+			<th class="col-sm-1">ВС</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>	
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>			
+		</tr>
+		<tr>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>	
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>			
+		</tr>
+		<tr>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>	
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>			
+		</tr>
+		<tr>
+			<td ondblclick="selectDay(this.id)"></td>	
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>			
+		</tr>
+		<tr>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>	
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>
+			<td ondblclick="selectDay(this.id)"></td>			
+		</tr>
+		<tr>
+			<td ondblclick="selectDay(this.id)" hidden></td>
+			<td ondblclick="selectDay(this.id)" hidden></td>
+		</tr>
+		</tbody>
+		</table>
+
+		</div>
+		</div>	
+		</div>
+		<div id="dayz" hidden>
+		<div class="col-md-3 center">
+		<div id="firsttable" class="table-responsive" >
+		<table id="tableII" class = "table table-bordered">
+		<tbody>
+		<tr>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>			
+		</tr>
+		<tr>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>			
+		</tr>
+		<tr>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>			
+		</tr>
+		<tr>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>	
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>
+			<td class="hours" ondblclick="selectTime(this.id)"></td>	
+		</tr>
+		</tbody>
+		</table>
+		</div>
+		</div>
+		<button class="btn btn-info btn-md" onclick="goBack()">Вернуться назад</button>
+	</div> 
+
+
+	<div id="reserv" hidden>
+		<form>
+		<input type="text" id="inputdate" name="date">
+		<br>
+		<input type="text" id="inputtime" name="time">
+		<br>
+		<input type="text" name="pacientName" placeholder="ФИО посетителя" required pattern="^[А-яЁё. ]+$"
+		title="Поле ФИО может содержать только буквы русского алфавита, точку и пробел.">
+		<br>
+		<input type="text" name="telephone" placeholder="Контатный телефон"  pattern="^[0-9]{12}"
+		title="Поле телефона должно быть длинной в 12 символов и может содержать только цифры.">
+		<br>
+		<div>
+		<input type="radio" name="nation" checked  value="">Гражданин РБ
+		<br>
+		<input type="radio" name="nation" value="">Иностранный гражданин	
+		</div>
+		<input type="submit" name="subm">
+		</form>
+	</div>
+
+	</center>
+<script src="scripts/jquery-3.3.1.min.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/query.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+
+</body>
+
+</html>
